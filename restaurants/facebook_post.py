@@ -38,7 +38,7 @@ class Facebook:
     # Return Type: None
     def publish_photo_msg(self, message, image_url):
         # write your code here
-
+        return 
 
 if __name__ == '__main__':
     facebook = Facebook()
