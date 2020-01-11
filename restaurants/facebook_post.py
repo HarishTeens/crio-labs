@@ -56,8 +56,8 @@ if __name__ == '__main__':
     # 2) Copy the URL of the image and assign it to the 'image_url' variable
     #    Eg: image_url = 'http://ksmartstatic.sify.com/cmf-1.0.0/appflow/bawarchi.com/Image/oeturjecjjdah_bigger.jpg'
     # 3) Fill the 'my_name' variable with your name so that you know the posts you have created
-    image_url = ''
-    my_name = ''
+    image_url = 'http://ksmartstatic.sify.com/cmf-1.0.0/appflow/bawarchi.com/Image/oeturjecjjdah_bigger.jpg'
+    my_name = 'teens'
 
     message = my_name + ' likes this ice-cream!'
     facebook.publish_photo_msg(message, image_url)

@@ -36,7 +36,7 @@ def upload(img_b64):
         
         # return image url if even if the response is not 200
         if 'data' in resp and 'link' in resp['data'] and resp['data']['link'] != None:
-            return resp['data']['url']
+            return resp['data']['link']
             
         # default return Briyani
 

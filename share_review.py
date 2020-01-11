@@ -25,7 +25,7 @@ def share_review(msg, file_name):
     try:
         resp = requests.post(
             data=data, url='http://localhost:8081/qeats/v1/review/share')
-        print("Response Status Code: " + str(resp.status_code))
+        print("Response Status Code: " + str(resp.status_code))        
     except requests.exceptions.ConnectionError:
         print(
             '\n\nError: Could not post review. Make sure you have started the server!!!\n\n')
