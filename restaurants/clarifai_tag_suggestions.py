@@ -18,21 +18,47 @@ import requests
 #     publicly accessible URL of the image to get tag suggestions
 # Return Type: list()
 #   return a list of tags provided by the Clarifai API
-def get_tags_suggestions(api_key, image_url):
-    # write your code here
+class Clarifai:    
+    @staticmethod
+    def get_access_token(token_name):
+        file_handle = open('access_tokens.sh', 'r+')
+        lines = file_handle.readlines()
+        file_handle.close()
+        for line in lines:
+            tokens = line.strip().split('=')
+            if tokens[0] == token_name:
+                return tokens[1].strip()
+        return 'Not found'
+    def __init__(self):
+        self.api_key = Clarifai.get_access_token('CLARIFAI_API_KEY')
 
-def get_access_token(token_name):
-    file_handle = open('access_tokens.sh', 'r+')
-    lines = file_handle.readlines()
-    file_handle.close()
-    for line in lines:
-        tokens = line.strip().split('=')
-        if tokens[0] == token_name:
-            return tokens[1].strip()
-    return 'Not found'
+    def get_tags_suggestions(self,image_url):
+        # write your code here
+        URL="https://api.clarifai.com/v2/models/bd367be194cf45149e75f01d59f77ba7/outputs"
+        HEADERS={
+            'Authorization':'Key '+self.api_key,
+            "Content-Type":"application/json"
+        }
+        PARAMS={
+            "inputs": [
+                {
+                    "data": {
+                        "image": {
+                            "url": image_url
+                        }
+                    }
+                }
+            ],
+        }        
+        r=requests.post(url=URL, json=PARAMS,headers= HEADERS)
+        tags=[]
+        for each in r.json()["outputs"][0]["data"]["concepts"]:
+            tags.append(each["name"])
+        
+        return tags
 
 if __name__ == '__main__':
-    clarify_api_key = get_access_token('CLARIFAI_API_KEY')
+    clarifai=Clarifai()    
     test_image_url = 'https://i.imgur.com/dlMjqQe.jpg'
-    tags_suggessted = get_tags_suggestions(clarify_api_key, test_image_url)
+    tags_suggessted = clarifai.get_tags_suggestions(test_image_url)
     print(tags_suggessted)

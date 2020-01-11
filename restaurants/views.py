@@ -10,6 +10,7 @@ from rest_framework import status
 import restaurants.image_uploader
 import restaurants.facebook_post
 import restaurants.pinterest_post
+import restaurants.clarifai_tag_suggestions
 
 # Create your views here.
 def get_access_token(token_name):
@@ -223,7 +224,8 @@ class GetTags(APIView):
         # TODO: CRIO_TASK_MODULE_TAG_SUGGESTION
         # Add call to clarifai api here.
         # Refer todo in qeats/restaurants/clarifai_tag_suggestions.py for instructions
-
+        clarifai = restaurants.clarifai_tag_suggestions.Clarifai()
+        tags=clarifai.get_tags_suggestions(image_url)
         return JsonResponse(tags, safe=False)
 
 # @POST
