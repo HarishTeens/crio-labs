@@ -28,4 +28,14 @@ class Pinterest:
 
 # write your code below
     def publish_photo_msg(self, message, image_url):
+        URL="https://api.pinterest.com/v1/me/pins"
+        PARAMS={
+            "board":"arishh2/qeatsboard",
+            "note":message,
+            "image_url":image_url
+        }
+
+        r=requests.post(url=URL,params=PARAMS)
+        print(str(r.json()))
+        
 
