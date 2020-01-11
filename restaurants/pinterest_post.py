@@ -39,7 +39,6 @@ class Pinterest:
         }
 
         r=requests.post(url=URL,params=PARAMS,headers=HEADERS)
-        
         print(str(r.json()))
         
 
