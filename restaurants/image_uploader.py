@@ -33,6 +33,12 @@ def upload(img_b64):
         image_url = 'https://i.imgur.com/kE2T5uv.jpg'
         if response.status_code == 200:
             image_url = resp['data']['link']
+        
+        # return image url if even if the response is not 200
+        if 'data' in resp and 'link' in resp['data'] and resp['data']['link'] != None:
+            return resp['data']['url']
+            
+        # default return Briyani
 
         return image_url
 
