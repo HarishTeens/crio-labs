@@ -216,11 +216,13 @@ class ShareReview(ListAPIView):
         if 'Facebook' in body['share']:
             facebook = restaurants.facebook_post.Facebook()
             facebook.publish_photo_msg(message, image_url)
-
+        
         #TODO: CRIO_TASK_MODULE_PINTEREST_SHARE
         # add support to share a review to a Pinterest board
         # check if you get Pinterest in body['share']
-        
+        if 'Pinterest' in body['share']:
+            pinterest = restaurants.pinterest_post.Pinterest()
+            pinterest.publish_photo_msg(message, image_url)
 
         response_data = {
             "reviewId": body['orderId'],
