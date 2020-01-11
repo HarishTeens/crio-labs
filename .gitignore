@@ -2,7 +2,7 @@
 # CRIO_SOLUTION_END_MODULE_FACEBOOK_SHARE_FROM_CLI
 
 # access tokens
-access_token.sh
+access_tokens.sh
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
