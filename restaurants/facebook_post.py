@@ -38,6 +38,15 @@ class Facebook:
     # Return Type: None
     def publish_photo_msg(self, message, image_url):
         # write your code here
+        URL="https://graph.facebook.com/v5.0/"+self.page_id+"/photos"
+        PARAMS={
+            'url':'https://assetsds.cdnedge.bluemix.net/sites/default/files/styles/very_big_1/public/feature/images/ice_cream_1.jpg',
+            'published':'false',
+            'caption':'very good ice cream',
+            'access_token':self.page_access_token
+        }
+        r = requests.get(url = URL, params = PARAMS)
+
         return 
 
 if __name__ == '__main__':
