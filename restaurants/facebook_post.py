@@ -41,7 +41,7 @@ class Facebook:
         URL="https://graph.facebook.com/v5.0/"+self.page_id+"/photos"
         PARAMS={
             "url":image_url,
-            "published":"false",
+            "published":"true",
             "caption":message,
             "access_token":self.page_access_token
         }
